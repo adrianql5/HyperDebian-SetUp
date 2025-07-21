@@ -73,15 +73,7 @@ Antes de instalar Debian, necesitas un USB booteable con la imagen de Debian 13 
 
 ## 3. Primeros pasos tras instalar Debian
 
-### a) Dar permisos de sudo a tu usuario
-
-```bash
-sudo usermod -aG sudo "tu_usuario_debian"
-```
-- **¿Para qué sirve?**  
-  Agrega tu usuario al grupo `sudo`, permitiéndote ejecutar comandos que requieran de ciertos privilegios.
-
-### b) Cambiar a superusuario (root)
+### a) Cambiar a superusuario (root)
 
 ```bash
 su -
@@ -89,31 +81,13 @@ su -
 - **¿Para qué sirve?**  
   Cambia al usuario root, que tiene permisos totales en el sistema.
 
-### c) Editar repositorios de software
+### b) Dar permisos de sudo a tu usuario
 
 ```bash
-sudo nano /etc/apt/sources.list
-```
-
-```
-deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free->
-deb http://security.debian.org/debian-security trixie-security main contrib non>
-deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
-```
-
-
-
-- **¿Para qué sirve?**  
-  Abre el archivo donde se listan los repositorios de software. Aquí puedes añadir, quitar o modificar las fuentes desde donde Debian descarga los programas.
-
-### d) Actualizar la lista de paquetes
-
-```bash
-sudo apt update
+sudo usermod -aG sudo "tu_usuario_debian"
 ```
 - **¿Para qué sirve?**  
-  Refresca el listado de paquetes disponibles y sus versiones.
+  Agrega tu usuario al grupo `sudo`, permitiéndote ejecutar comandos que requieran de ciertos privilegios.
 
 ---
 
