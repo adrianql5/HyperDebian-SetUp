@@ -86,73 +86,98 @@ su -
 ```bash
 sudo usermod -aG sudo "tu_usuario_debian"
 ```
+Finalmente reiniciamos con ``` reboot``` 
+
 - **¿Para qué sirve?**  
   Agrega tu usuario al grupo `sudo`, permitiéndote ejecutar comandos que requieran de ciertos privilegios.
 
 ---
 
-## 4. Añadir el repositorio "unstable" para obtener Hyprland
+### c) Verificar que tienes configuradas correctamente las fuentes de paquetes
+Un paquete es un archivo que contiene todo lo necesario para instalar un programa en Linux: el ejecutable, librerías, documentación y scripts de configuración. Los paquetes suelen tener extensión .deb en Debian y derivados (como Ubuntu).
 
-### ¿Por qué es necesario?
-Hyprland y algunos paquetes están más actualizados en el repositorio "unstable" de Debian.
+Los sistemas Linux usan gestores de paquetes para instalar, actualizar o eliminar software de forma sencilla y segura. Estos gestores descargan los paquetes desde servidores llamados "repositorios".
+
+APT (Advanced Package Tool) es el sistema de gestión de paquetes usado en Debian y muchas de sus variantes. Permite buscar, instalar, actualizar y eliminar software automáticamente, resolviendo dependencias entre paquetes.
+
+El archivo /etc/apt/sources.list y los archivos en /etc/apt/sources.list.d/ indican a APT de dónde descargar los paquetes (las “fuentes de paquetes”).
+- `sudo apt update` actualiza la lista de paquetes disponibles.
+- `sudo apt install nombre_paquete` instala un programa.
+
+
+1. **Edita el archivo de fuentes de APT**  
+   Abre el archivo `/etc/apt/sources.list` con privilegios de superusuario:
+
+   ```bash
+   sudo nano /etc/apt/sources.list
+   ```
+
+2. **Asegúrate de que contenga las siguientes líneas:**  
+   (Reemplaza el contenido si es necesario)
+
+   ```
+   deb http://deb.debian.org/debian/ trixie main non-free-firmware
+   deb-src http://deb.debian.org/debian/ trixie main non-free-firmware
+
+   deb http://security.debian.org/debian-security trixie-security main non-free-firmware
+   deb-src http://security.debian.org/debian-security trixie-security main non-free-firmware
+
+   deb http://deb.debian.org/debian/ trixie-updates main non-free-firmware
+   deb-src http://deb.debian.org/debian/ trixie-updates main non-free-firmware
+   ```
+
+3. **Guarda y cierra el archivo:**  
+   - Presiona `Ctrl + O` para guardar los cambios  
+   - Presiona `Enter` para confirmar  
+   - Presiona `Ctrl + X` para salir del editor
+
+4. **Actualiza la lista de paquetes:**  
+   Ejecuta el siguiente comando para actualizar los repositorios:
+
+   ```bash
+   sudo apt update
+   ```
+   
+### d) Instalar Git
+Git es un sistema de control de versiones distribuido.
+Sirve para gestionar y registrar los cambios que se realizan en archivos y proyectos, especialmente en desarrollo de software.
+Permite trabajar en equipo, guardar el historial de modificaciones, recuperar versiones anteriores y colaborar fácilmente entre varias personas, asegurando que los cambios no se pierdan y se puedan combinar de manera ordenada.
 
 ```bash
-echo 'deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware' | sudo tee /etc/apt/sources.list.d/unstable.list
-sudo apt update
+sudo apt install git
 ```
-
-- **¿Para qué sirve?**
-  - Añade el repositorio "unstable" a tu sistema para acceder a las versiones más recientes de ciertos paquetes.
-  - Ten en cuenta que usar "unstable" puede aumentar el riesgo de instalar software menos probado.
-
-### Instalar Hyprland usando el repositorio unstable
-
-```bash
-sudo apt -t unstable install hyprland
-```
-- **¿Para qué sirve?**  
-  Instala Hyprland y sus dependencias desde el repositorio "unstable".
 
 ---
 
-## 5. Instalar utilidades adicionales
-
-### Instalar GNOME Network Manager (opcional pero recomendado)
-
-```bash
-sudo apt install network-manager-gnome
+## 4. Instalar Hyprland
+``` bash
+sudo apt install hyprland
 ```
-- **¿Para qué sirve?**  
-  Herramienta gráfica para gestionar conexiones de red fácilmente.
 
----
-
-## 6. Descargar y ejecutar un script de configuración de Hyprland
-
-### ¿Por qué este paso?
-Existen scripts que automatizan la configuración y optimización de Hyprland en Debian, facilitando el proceso especialmente para principiantes.
+Finalmente clonamos este repostitorio: https://github.com/JaKooLit/Debian-Hyprland
 
 ```bash
-git clone --depth=1 https://github.com/JaKooLit/Debian-Hyprland.git ~/Debian-Hyprland
-cd ~/Debian-Hyprland
-chmod +x install.sh
+git clone https://github.com/JaKooLit/Debian-Hyprland
+```
+
+Esto creará una carpeta llamada Debian-Hyprland en el directorio donde ejecutaste el comando. Accede a la carpeta y ejecuta el instalador:
+``` bash
+cd Debian-Hyprland
 ./install.sh
 ```
-- **¿Para qué sirve cada comando?**
-  - `git clone ...`: Descarga el repositorio con los scripts de configuración.
-  - `cd ~/Debian-Hyprland`: Entra en la carpeta del repositorio clonado.
-  - `chmod +x install.sh`: Da permisos de ejecución al script.
-  - `./install.sh`: Ejecuta el script que instalará y configurará Hyprland automáticamente.
+Sigue las instrucciones que te muestre el instalador. Por ejemplo, podrías ver una pantalla como esta:
+<img width="717" height="437" alt="imagen" src="https://github.com/user-attachments/assets/ea9fef0c-8ec7-4afa-bd0d-484d7fad1989" />
+
+Selecciona las opciones que prefieras según tus necesidades.
+
+Cuando la instalación termine, reinicia tu sistema para aplicar los cambios:
+```bash
+sudo reboot
+```
 
 ---
 
-## 7. Reinicia tu ordenador
-
-Una vez completados los pasos anteriores, reinicia tu PC para empezar a utilizar Hyprland.
-
----
-
-## 8. Consejos y enlaces útiles
+## 5. Consejos y enlaces útiles
 
 - [Wiki oficial de Hyprland](https://wiki.hyprland.org/)
 - [Documentación de Debian](https://wiki.debian.org/)
