@@ -114,14 +114,27 @@ El archivo /etc/apt/sources.list y los archivos en /etc/apt/sources.list.d/ indi
    (Reemplaza el contenido si es necesario)
 
    ```
+   #deb cdrom:[Debian GNU/Linux 13.0.0 _Trixie_ - Official amd64 NETINST with firm>
+
    deb http://deb.debian.org/debian/ trixie main non-free-firmware
    deb-src http://deb.debian.org/debian/ trixie main non-free-firmware
-
-   deb http://security.debian.org/debian-security trixie-security main non-free-firmware
-   deb-src http://security.debian.org/debian-security trixie-security main non-free-firmware
-
+   
+   deb http://security.debian.org/debian-security trixie-security main non-free-fi>
+   deb-src http://security.debian.org/debian-security trixie-security main non-fre>
+   
+   # trixie-updates, to get updates before a point release is made;
+   # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates>
    deb http://deb.debian.org/debian/ trixie-updates main non-free-firmware
    deb-src http://deb.debian.org/debian/ trixie-updates main non-free-firmware
+   
+   # This system was installed using removable media other than
+   # CD/DVD/BD (e.g. USB stick, SD card, ISO image file).
+   # The matching "deb cdrom" entries were disabled at the end
+   # of the installation process.
+   # For information about how to configure apt package sources,
+   # see the sources.list(5) manual.
+   
+   deb http://deb.debian.org/debian/ unstable main contrib non-free
    ```
 
 3. **Guarda y cierra el archivo:**  
