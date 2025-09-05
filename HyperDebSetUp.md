@@ -31,45 +31,43 @@ Hyprland es un **compositor dinámico para Wayland**, centrado en la personaliza
 ## 2. Cómo crear un USB booteable con Debian 13 usando Balena Etcher
 
 ### ¿Para qué sirve este paso?
+
 Antes de instalar Debian, necesitas un USB booteable con la imagen de Debian 13 para poder arrancar e instalar el sistema operativo en tu PC o portátil.
 
 ### Pasos detallados:
 
 #### 1. Descargar la imagen ISO de Debian 13
 
-- Ve a la [página oficial de descargas de Debian](https://www.debian.org/).
-- Haz clic en **Otras Descargas**:
-  ![imagen1](https://github.com/user-attachments/assets/f863ec4e-d266-40df-9cf5-ae2dab24f902)
-- Luego, selecciona **Imágenes ISO de Debian «en pruebas» («testing»)**:
-  ![imagen2](https://github.com/user-attachments/assets/1b0375ae-86bf-4483-b3ed-b2b8b65b23bd)
-- Descarga el archivo `.iso` apropiado para tu arquitectura:
-    - Para la mayoría de PCs (Intel/AMD): selecciona `amd64`
-    - Para equipos con procesadores tipo Mac M1/M2: selecciona `arm64`
-  ![imagen3](https://github.com/user-attachments/assets/c97127eb-536f-48ab-b6ba-f060b54fa225)
-- [Enlace directo a las imágenes de instalación](https://www.debian.org/devel/debian-installer/)
+* Ve a la [página oficial de descargas de Debian](https://www.debian.org/download).
+* Descarga la ISO adecuada para tu arquitectura.
+
+  * Para la mayoría de PCs (Intel/AMD): **`debian-13.0.0-amd64-netinst.iso`**
+  * Para procesadores ARM (ej. algunos portátiles o placas): **`arm64`**
+
+> 📌 El archivo más común es el **netinst (Network Installation)**, que ocupa poco espacio y descarga los paquetes durante la instalación.
+> Si prefieres, también puedes descargar la ISO completa (DVD) desde la misma página.
 
 #### 2. Descargar e instalar Balena Etcher
 
-- Página oficial: [https://www.balena.io/etcher/](https://www.balena.io/etcher/)
-- Descarga el instalador para tu sistema operativo (Windows, macOS o Linux) e instálalo siguiendo los pasos que indica la web.
+* Página oficial: [https://www.balena.io/etcher/](https://www.balena.io/etcher/)
+* Descarga el instalador para tu sistema operativo (Windows, macOS o Linux) e instálalo siguiendo los pasos que indica la web.
 
 #### 3. Flashear la ISO en el USB
 
-- Abre **Balena Etcher**.
-- Selecciona la imagen ISO de Debian que descargaste.
-- Inserta tu USB y selecciónalo en Etcher.
-- Haz clic en **“Flash!”** para grabar la imagen en el USB.  
+* Abre **Balena Etcher**.
+* Selecciona la imagen ISO de Debian que descargaste.
+* Inserta tu USB y selecciónalo en Etcher.
+* Haz clic en **“Flash!”** para grabar la imagen en el USB.
   *(Este proceso borrará todo lo que haya en el USB)*
 
 #### 4. Instalar Debian usando el USB booteable
 
-- Reinicia tu PC y entra en el menú de arranque (boot menu).  
-  *(Suele ser una tecla como F12, F2, ESC, o DEL, dependiendo del fabricante. Busca en internet “boot menu + tu marca/modelo” si tienes dudas)*
-- Elige arrancar desde el USB.
-- Sigue el asistente de instalación guiado de Debian.  
-  *(El proceso es bastante intuitivo, solo sigue las instrucciones en pantalla y selecciona las opciones recomendadas si tienes dudas)*
+* Reinicia tu PC y entra en el menú de arranque (boot menu).
+  *(Suele ser una tecla como F12, F2, ESC o DEL, dependiendo del fabricante. Busca en internet “boot menu + tu marca/modelo” si tienes dudas).*
+* Elige arrancar desde el USB.
+* Sigue el asistente de instalación guiado de Debian.
+  *(El proceso es bastante intuitivo, solo sigue las instrucciones en pantalla y selecciona las opciones recomendadas si tienes dudas).*
 
----
 
 ## 3. Primeros pasos tras instalar Debian
 
